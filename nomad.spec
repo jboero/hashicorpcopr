@@ -41,8 +41,9 @@ cp -p %{SOURCE2} %{buildroot}%{_sysconfdir}/%{name}/%{name}.agent.hcl
 
 mkdir -p %{buildroot}%{_sharedstatedir}/%{name}
 
-mkdir -p %{buildroot}%{_unitdir}
-cp -p %{SOURCE3} %{buildroot}%{_unitdir}
+# Some platforms don't have unitdir... ugh
+mkdir -p %{buildroot}/usr/lib/systemd/system
+cp -p %{SOURCE3} %{buildroot}/usr/lib/systemd/system/
 
 %clean
 rm -rf %{buildroot}
@@ -54,7 +55,7 @@ rm -rf %{_builddir}/*
 %config(noreplace) %{_sysconfdir}/%{name}/%{name}.hcl
 %config(noreplace) %{_sysconfdir}/%{name}/%{name}.agent.hcl
 %attr(0750,%{name},%{name}) %dir %{_sharedstatedir}/%{name}
-%{_unitdir}/%{name}.service
+/usr/lib/systemd/system/%{name}.service
 
 %pre
 getent group %{name} > /dev/null || groupadd -r %{name}
