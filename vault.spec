@@ -51,7 +51,7 @@ rm -rf %{_builddir}/*
 %{_bindir}/%{name}
 %config(noreplace) %{_sysconfdir}/sysconfig/%{name}.hcl
 %attr(0750,%{name},%{name}) %dir %{_sharedstatedir}/%{name}
-%{_unitdir}/%{name}.service
+/usr/lib/systemd/system/%{name}.service
 
 %pre
 getent group %{name} > /dev/null || groupadd -r %{name}
