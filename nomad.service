@@ -1,0 +1,13 @@
+[Unit]
+Description=Nomad secret management tool
+After=syslog.target network.target local-fs.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=simple
+User=nomad
+Group=nomad
+ExecStart=/usr/bin/nomad agent -config=/etc/nomad/
+ExecReload=/bin/kill -s HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

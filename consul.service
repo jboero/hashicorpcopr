@@ -1,0 +1,13 @@
+[Unit]
+Description=Consul secret management tool
+After=syslog.target network.target local-fs.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=simple
+User=consul
+Group=consul
+ExecStart=/bin/consul agent -config-dir=/etc/consul.d/
+ExecReload=/bin/kill -s HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
