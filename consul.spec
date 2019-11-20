@@ -50,7 +50,7 @@ rm -rf %{_builddir}/*
 %files
 %{_bindir}/%{name}
 %dir %{_sysconfdir}/%{name}.d
-%config(noreplace) %{_sysconfdir}/%{name}.d/%{name}.conf
+%config(noreplace) %{_sysconfdir}/%{name}.d/%{name}-server.json
 %attr(0750,%{name},%{name}) %dir %{_sharedstatedir}/%{name}
 %{_unitdir}/%{name}.service
 
