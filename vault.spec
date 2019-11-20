@@ -34,8 +34,8 @@ credentials, and more.
 mkdir -p %{buildroot}%{_bindir}/
 cp -p %{name} %{buildroot}%{_bindir}/
 
-mkdir -p %{buildroot}%{_sysconfdir}/sysconfig
-cp -p %{SOURCE1} %{buildroot}%{_sysconfdir}/sysconfig/
+mkdir -p %{buildroot}%{_sysconfdir}/%{name}
+cp -p %{SOURCE1} %{buildroot}%{_sysconfdir}/%{name}
 
 mkdir -p %{buildroot}%{_sharedstatedir}/%{name}
 
@@ -49,7 +49,7 @@ rm -rf %{_builddir}/*
 
 %files
 %{_bindir}/%{name}
-%config(noreplace) %{_sysconfdir}/sysconfig/%{name}.hcl
+%config(noreplace) %{_sysconfdir}/%{name}/%{name}.hcl
 %attr(0750,%{name},%{name}) %dir %{_sharedstatedir}/%{name}
 /usr/lib/systemd/system/%{name}.service
 
