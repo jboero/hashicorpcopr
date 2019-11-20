@@ -28,7 +28,6 @@ credentials, and more.
 %autosetup -c %{name}-%{version}
 
 %build
-unzip %{SOURCE0}
 
 %install
 
