@@ -39,7 +39,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/%{name}
 cp -p %{SOURCE1} %{buildroot}%{_sysconfdir}/%{name}/%{name}.hcl
 cp -p %{SOURCE2} %{buildroot}%{_sysconfdir}/%{name}/%{name}.agent.hcl
 
-mkdir -p %{buildroot}%{_sharedstatedir}/%{name}
+mkdir -p %{buildroot}%{_sharedstatedir}/%{name}/plugins
 
 # Some platforms don't have unitdir... ugh
 mkdir -p %{buildroot}/usr/lib/systemd/system
