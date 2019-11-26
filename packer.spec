@@ -4,7 +4,7 @@ Name:		packer
 Version:	1.4.5
 Release:	1
 Summary:	Hashicorp packer build tool.
-License:	Hashicorp
+License:	MPL
 Source0:	https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_amd64.zip
 Requires(pre):	shadow-utils
 Requires(post):	systemd libcap
