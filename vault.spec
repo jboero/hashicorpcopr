@@ -2,7 +2,7 @@
 
 Name:		vault
 Version:	1.3.0
-Release:	1%{?dist}
+Release:	1
 Summary:	Vault is a tool for securely accessing secrets
 License:	Hashicorp
 Source0:	https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_amd64.zip
