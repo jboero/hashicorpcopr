@@ -2,7 +2,7 @@
 
 Name:		terraform
 Version:	0.12.16
-Release:	1%{?dist}
+Release:	1
 Summary:	Hashicorp terraform provisioning tool.
 License:	Hashicorp
 Source0:	https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_amd64.zip
