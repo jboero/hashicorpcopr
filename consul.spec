@@ -5,7 +5,7 @@ Name:		consul
 Version:	1.6.2
 Release:	1
 Summary:	Consul is a tool for service discovery
-License:	Hashicorp
+License:	MPL
 Source0:	https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_amd64.zip
 Source1:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}-server.json
 Source2:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.service
