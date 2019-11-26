@@ -4,7 +4,7 @@ Name:		nomad
 Version:	0.10.1
 Release:	1
 Summary:	Hashicorp Nomad job scheduler
-License:	Hashicorp
+License:	MPL
 Source0:	https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_amd64.zip
 Source1:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.hcl
 Source2:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.agent.hcl
