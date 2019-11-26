@@ -4,7 +4,7 @@ Name:		vault
 Version:	1.3.0
 Release:	1
 Summary:	Vault is a tool for securely accessing secrets
-License:	Hashicorp
+License:	MPL
 Source0:	https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_amd64.zip
 Source1:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.hcl
 Source2:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.service
