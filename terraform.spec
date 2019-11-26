@@ -4,7 +4,7 @@ Name:		terraform
 Version:	0.12.16
 Release:	1
 Summary:	Hashicorp terraform provisioning tool.
-License:	Hashicorp
+License:	MPL
 Source0:	https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_amd64.zip
 Requires(pre):	shadow-utils
 Requires(post):	systemd libcap
