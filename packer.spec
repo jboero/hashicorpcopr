@@ -2,7 +2,7 @@
 
 Name:		packer
 Version:	1.4.5
-Release:	1
+Release:	1%{?dist}
 Summary:	Hashicorp packer build tool.
 License:	MPL
 Source0:	https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_amd64.zip
