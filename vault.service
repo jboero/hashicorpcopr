@@ -4,9 +4,10 @@ After=syslog.target network.target local-fs.target remote-fs.target nss-lookup.t
 
 [Service]
 Type=simple
+EnvironmentFile=-/etc/sysconfig/vault.conf
 User=vault
 Group=vault
-ExecStart=/usr/bin/vault server -config=/etc/vault/vault.hcl
+ExecStart=/usr/bin/vault $VAULT_ARGS
 ExecReload=/bin/kill -s HUP $MAINPID
 
 [Install]
