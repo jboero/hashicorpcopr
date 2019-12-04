@@ -70,7 +70,17 @@ exit 0
 
 %preun
 %systemd_preun %{name}.service
+if [ $1 -eq 0 ]; then
+      /usr/bin/systemctl --no-reload disable %{name}.service
+      /usr/bin/systemctl stop %{name}.service >/dev/null 2>&1 ||:
+      /usr/bin/systemctl disable %{name}.service
 
+    fi
+    if [ $1 -eq 1 ]; then
+      /usr/bin/systemctl --no-reload disable %{name}.service
+      /usr/bin/systemctl stop %{name}.service
+    fi
+    
 %postun
 %systemd_postun_with_restart %{name}.service
 
