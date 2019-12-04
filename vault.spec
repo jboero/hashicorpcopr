@@ -9,6 +9,7 @@ Source0:	https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_li
 Source1:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.hcl
 Source2:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.service
 Source3:    https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.conf
+BuildRequires:  systemd
 Requires(pre):	shadow-utils
 Requires(post):	systemd
 Requires(preun):	systemd
