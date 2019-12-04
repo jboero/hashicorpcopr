@@ -9,6 +9,7 @@ License:	MPL
 Source0:	https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_amd64.zip
 Source1:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}-server.json
 Source2:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.service
+BuildRequires:  systemd
 Requires(pre):	shadow-utils
 Requires(post):	systemd libcap
 Requires(preun):	systemd
