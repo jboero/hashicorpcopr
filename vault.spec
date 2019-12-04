@@ -52,6 +52,7 @@ rm -rf %{_builddir}/*
 %files
 %{_bindir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}/%{name}.hcl
+%config(noreplace) %{_sysconfdir}/sysconfig/%{name}.conf
 %attr(0750,%{name},%{name}) %dir %{_sharedstatedir}/%{name}
 /usr/lib/systemd/system/%{name}.service
 
