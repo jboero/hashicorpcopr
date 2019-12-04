@@ -8,6 +8,7 @@ License:	MPL
 Source0:	https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_amd64.zip
 Source1:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.hcl
 Source2:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.service
+Source3:    https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.conf
 Requires(pre):	shadow-utils
 Requires(post):	systemd
 Requires(preun):	systemd
@@ -36,6 +37,7 @@ cp -p %{name} %{buildroot}%{_bindir}/
 
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}
 cp -p %{SOURCE1} %{buildroot}%{_sysconfdir}/%{name}
+cp -p %{SOURCE3} %{buildroot}%{_sysconfdir}/sysconfig/
 
 mkdir -p %{buildroot}%{_sharedstatedir}/%{name}
 
