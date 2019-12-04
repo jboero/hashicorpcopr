@@ -35,7 +35,7 @@ credentials, and more.
 mkdir -p %{buildroot}%{_bindir}/
 cp -p %{name} %{buildroot}%{_bindir}/
 
-mkdir -p %{buildroot}%{_sysconfdir}/%{name}
+mkdir -p %{buildroot}%{_sysconfdir}/%{name} %{buildroot}%{_sysconfdir}/sysconfig
 cp -p %{SOURCE1} %{buildroot}%{_sysconfdir}/%{name}
 cp -p %{SOURCE3} %{buildroot}%{_sysconfdir}/sysconfig/
 
