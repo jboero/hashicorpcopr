@@ -2,7 +2,7 @@
 
 Name:		vault
 Version:	1.3.0
-Release:	2
+Release:	3%{?dist}
 Summary:	Vault is a tool for securely accessing secrets
 License:	MPL
 Source0:	https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_amd64.zip
