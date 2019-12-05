@@ -1,7 +1,7 @@
 # https://fedoraproject.org/wiki/How_to_create_an_RPM_package
 
 Name:		nomad
-Version:	0.10.1
+Version:	0.10.2
 Release:	1%{?dist}
 Summary:	Hashicorp Nomad job scheduler
 License:	MPL
