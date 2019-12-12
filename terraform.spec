@@ -5,7 +5,8 @@ Version:	0.12.18
 Release:	1%{?dist}
 Summary:	Hashicorp terraform provisioning tool.
 License:	MPL
-Source0:	https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_amd64.zip
+# Our engineering uses "amd64" instead of "x86_64" so ugly ugly sedification...
+Source0:	'https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_%(echo "%{_arch}" | sed -e "s/amd64/x86_64/").zip'
 # Some builds fail on systemd, but hey, systemd right? 👍
 BuildRequires: (systemd or bash)
 Requires(pre):	shadow-utils
