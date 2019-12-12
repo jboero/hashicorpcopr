@@ -1,12 +1,14 @@
 # https://fedoraproject.org/wiki/How_to_create_an_RPM_package
+# Can't escape ) in macro sadly so no case...
+%define hashiarch %(if [ "%{_arch}" == 'x86_64' ]; then echo 'amd64'; elif [ "%{_arch}" == 'aarch64' ]; then echo 'arm'; elif [ "%_arch" == 'i386' ]; then echo '386'; else echo "%{_arch}"; fi)
 
-Name:		terraform
-Version:	0.12.18
-Release:	1%{?dist}
-Summary:	Hashicorp terraform provisioning tool.
-License:	MPL
-# Our engineering uses "amd64" instead of "x86_64" so ugly ugly sedification...
-Source0:	'https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_%(echo "%{_arch}" | sed -e "s/amd64/x86_64/").zip'
+Name:           terraform
+Version:        0.12.18
+Release:        1%{?dist}
+Summary:        Hashicorp terraform provisioning tool.
+License:        MPL
+# Our engineering uses "amd64" instead of "x86_64" so ugly mapping...
+Source0:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_%{hashiarch}.zip
 # Some builds fail on systemd, but hey, systemd right? 👍
 BuildRequires: (systemd or bash)
 Requires(pre):	shadow-utils
