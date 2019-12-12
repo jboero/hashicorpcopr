@@ -6,6 +6,8 @@ Release:	1%{?dist}
 Summary:	Hashicorp terraform provisioning tool.
 License:	MPL
 Source0:	https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_amd64.zip
+# Some builds fail on systemd, but hey, systemd right? 👍
+BuildRequires: (systemd or bash)
 Requires(pre):	shadow-utils
 Requires(post):	systemd libcap
 URL:		https://www.%{name}.io/
