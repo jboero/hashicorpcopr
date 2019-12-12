@@ -8,10 +8,12 @@ Release:        1%{?dist}
 Summary:        Hashicorp terraform provisioning tool.
 License:        MPL
 # Our engineering uses "amd64" instead of "x86_64" so ugly mapping...
-%undefine       _disable_source_fetch
 Source0:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_%{hashiarch}.zip
+Source1:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_arm.zip
+Source2:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_386.zip
+
 # Some builds fail on systemd, but hey, systemd right? 👍
-BuildRequires: systemd
+BuildRequires: systemd unzip
 Requires(pre):	shadow-utils
 Requires(post):	systemd libcap
 URL:		https://www.%{name}.io/
