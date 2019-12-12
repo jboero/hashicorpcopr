@@ -10,7 +10,7 @@ License:        MPL
 # Our engineering uses "amd64" instead of "x86_64" so ugly mapping...
 Source0:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_%{hashiarch}.zip
 # Some builds fail on systemd, but hey, systemd right? 👍
-BuildRequires: (systemd or bash)
+BuildRequires: systemd
 Requires(pre):	shadow-utils
 Requires(post):	systemd libcap
 URL:		https://www.%{name}.io/
