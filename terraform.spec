@@ -1,7 +1,7 @@
 # https://fedoraproject.org/wiki/How_to_create_an_RPM_package
 
 Name:		terraform
-Version:	0.12.17
+Version:	0.12.18
 Release:	1%{?dist}
 Summary:	Hashicorp terraform provisioning tool.
 License:	MPL
