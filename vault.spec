@@ -15,7 +15,7 @@ Source3:    https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name
 Source4:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_arm.zip
 Source5:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_386.zip
 
-BuildRequires:  systemd
+BuildRequires:  systemd coreutils unzip
 Requires(pre):	shadow-utils
 Requires(post):	systemd
 Requires(preun):	systemd
