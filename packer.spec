@@ -11,6 +11,7 @@ License:	MPL
 Source0:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_%{hashiarch}.zip
 Source1:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_arm.zip
 Source2:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_386.zip
+BuildRequires: systemd coreutils
 Requires(pre):	shadow-utils
 Requires(post):	systemd libcap
 URL:		https://www.%{name}.io/
