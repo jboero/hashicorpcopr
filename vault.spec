@@ -1,14 +1,20 @@
 # https://fedoraproject.org/wiki/How_to_create_an_RPM_package
+# Can't escape ) in macro sadly so no case...
+%define hashiarch %(if [ "%{_arch}" == 'x86_64' ]; then echo 'amd64'; elif [ "%{_arch}" == 'aarch64' ]; then echo 'arm'; elif [ "%_arch" == 'i386' ]; then echo '386'; else echo "%{_arch}"; fi)
 
 Name:		vault
 Version:	1.3.0
 Release:	3%{?dist}
 Summary:	Vault is a tool for securely accessing secrets
 License:	MPL
-Source0:	https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_amd64.zip
+# Our engineering uses "amd64" instead of "x86_64" so ugly mapping...
+Source0:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_%{hashiarch}.zip
 Source1:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.hcl
 Source2:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.service
 Source3:    https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.conf
+Source4:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_arm.zip
+Source5:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_386.zip
+
 BuildRequires:  systemd
 Requires(pre):	shadow-utils
 Requires(post):	systemd
