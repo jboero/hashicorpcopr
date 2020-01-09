@@ -9,6 +9,7 @@ User=vault
 Group=vault
 ExecStart=/usr/bin/vault $VAULT_ARGS
 ExecReload=/bin/kill -s HUP $MAINPID
+LimitMEMLOCK=infinity
 
 [Install]
 WantedBy=multi-user.target
