@@ -9,6 +9,6 @@ To enable these repos for easy install and automatic updates, do the following (
 yum copr enable boeroboy/hashicorp
 yum install vault
 ```
-Note that as Hashicorp uses arch "amd64" instead of EL standard "x86_64" we can't use the standard ${\_arch} reference to build all architectures automatically.  Only x86_64 is supported currently.
+Note that as Hashicorp uses arch "amd64" instead of EL standard "x86_64" we can't use the standard ${\_arch} reference to build all architectures automatically.  I had to do a workaround with conversions from Hashicorp arch naming to EL naming.
 
 Detailed build state can be found here: https://copr.fedorainfracloud.org/coprs/boeroboy/hashicorp/monitor/detailed
