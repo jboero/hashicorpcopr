@@ -38,7 +38,8 @@ mkdir -p %{buildroot}%{_bindir}/
 cp -p %{name} %{buildroot}%{_bindir}/
 
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}.d
-cp -p %{SOURCE1} ${SOURCE3} %{buildroot}%{_sysconfdir}/%{name}.d/
+cp -p %{SOURCE1} %{buildroot}%{_sysconfdir}/%{name}.d/
+cp -p %{SOURCE3} %{buildroot}%{_sysconfdir}/%{name}.d/
 
 mkdir -p %{buildroot}%{_sharedstatedir}/%{name}
 
