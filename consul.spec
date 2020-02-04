@@ -7,9 +7,9 @@ Release:	2%{?dist}
 Summary:	Consul is a tool for service discovery
 License:	MPL
 Source0:	https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_amd64.zip
-Source1:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}-server.hcl
+Source1:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}-server.json.sample
 Source2:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.service
-Source3:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}-agent.hcl
+Source3:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}-agent.json
 BuildRequires:  systemd coreutils unzip
 Requires(pre):	shadow-utils
 Requires(post):	systemd libcap
@@ -38,7 +38,7 @@ mkdir -p %{buildroot}%{_bindir}/
 cp -p %{name} %{buildroot}%{_bindir}/
 
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}.d
-cp -p %{SOURCE1} %{SOURCE3} %{buildroot}%{_sysconfdir}/%{name}.d/
+cp -p %{SOURCE1} ${SOURCE3} %{buildroot}%{_sysconfdir}/%{name}.d/
 
 mkdir -p %{buildroot}%{_sharedstatedir}/%{name}
 
@@ -53,8 +53,8 @@ rm -rf %{_builddir}/*
 %files
 %{_bindir}/%{name}
 %dir %{_sysconfdir}/%{name}.d
-%config(noreplace) %{_sysconfdir}/%{name}.d/%{name}-server.hcl
-%config(noreplace) %{_sysconfdir}/%{name}.d/%{name}-agent.hcl
+%config(noreplace) %{_sysconfdir}/%{name}.d/%{name}-server.json.sample
+%config(noreplace) %{_sysconfdir}/%{name}.d/%{name}-agent.json
 %attr(0750,%{name},%{name}) %dir %{_sharedstatedir}/%{name}
 /usr/lib/systemd/system/%{name}.service
 
