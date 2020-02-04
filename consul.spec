@@ -3,7 +3,7 @@
 Name:		consul
 #Version:	1.6.2+ent
 Version:	1.6.3
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Consul is a tool for service discovery
 License:	MPL
 Source0:	https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_amd64.zip
