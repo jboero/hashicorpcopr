@@ -53,7 +53,8 @@ rm -rf %{_builddir}/*
 %files
 %{_bindir}/%{name}
 %dir %{_sysconfdir}/%{name}.d
-%config(noreplace) %{_sysconfdir}/%{name}.d/%{name}-server.json
+%config(noreplace) %{_sysconfdir}/%{name}.d/%{name}-server.hcl
+%config(noreplace) %{_sysconfdir}/%{name}.d/%{name}-agent.hcl
 %attr(0750,%{name},%{name}) %dir %{_sharedstatedir}/%{name}
 /usr/lib/systemd/system/%{name}.service
 
