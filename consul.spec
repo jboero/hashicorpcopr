@@ -7,8 +7,9 @@ Release:	2%{?dist}
 Summary:	Consul is a tool for service discovery
 License:	MPL
 Source0:	https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_amd64.zip
-Source1:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}-server.json
+Source1:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}-server.hcl
 Source2:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.service
+Source3:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}-agent.hcl
 BuildRequires:  systemd coreutils unzip
 Requires(pre):	shadow-utils
 Requires(post):	systemd libcap
@@ -37,7 +38,7 @@ mkdir -p %{buildroot}%{_bindir}/
 cp -p %{name} %{buildroot}%{_bindir}/
 
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}.d
-cp -p %{SOURCE1} %{buildroot}%{_sysconfdir}/%{name}.d/
+cp -p %{SOURCE1} %{SOURCE3} %{buildroot}%{_sysconfdir}/%{name}.d/
 
 mkdir -p %{buildroot}%{_sharedstatedir}/%{name}
 
