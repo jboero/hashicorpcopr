@@ -42,6 +42,8 @@ cp -p %{SOURCE1} %{buildroot}%{_sysconfdir}/%{name}.d/
 cp -p %{SOURCE3} %{buildroot}%{_sysconfdir}/%{name}.d/
 
 mkdir -p %{buildroot}%{_sharedstatedir}/%{name}
+mkdir -p /var/lib/consul
+chown consul:consul /var/lib/consul
 
 # Remember some releases don't use _unitdir..
 mkdir -p %{buildroot}/usr/lib/systemd/system
@@ -58,6 +60,7 @@ rm -rf %{_builddir}/*
 %config(noreplace) %{_sysconfdir}/%{name}.d/%{name}-agent.json
 %attr(0750,%{name},%{name}) %dir %{_sharedstatedir}/%{name}
 /usr/lib/systemd/system/%{name}.service
+/var/lib/consul
 
 %pre
 getent group %{name} > /dev/null || groupadd -r %{name}
