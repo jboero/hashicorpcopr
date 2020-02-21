@@ -1,8 +1,7 @@
 # https://fedoraproject.org/wiki/How_to_create_an_RPM_package
 
 Name:		consul
-#Version:	1.6.2+ent
-Version:	1.7.0
+Version:	1.7.1
 Release:	1%{?dist}
 Summary:	Consul is a tool for service discovery
 License:	MPL
