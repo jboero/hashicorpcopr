@@ -62,7 +62,7 @@ rm -rf %{_builddir}/*
 %config(noreplace) %{_sysconfdir}/%{name}.d/%{name}-agent.json
 %attr(0750,%{name},%{name}) %dir %{_sharedstatedir}/%{name}
 /usr/lib/systemd/system/%{name}.service
-/var/lib/consul
+%dir %attr(0750, consul, consul) /var/lib/consul
 
 %pre
 getent group %{name} > /dev/null || groupadd -r %{name}
