@@ -45,7 +45,6 @@ cp -p %{SOURCE3} %{buildroot}%{_sysconfdir}/%{name}.d/
 
 mkdir -p %{buildroot}%{_sharedstatedir}/%{name}
 mkdir -p %{buildroot}/var/lib/consul
-chown consul:consul %{buildroot}/var/lib/consul
 
 # Remember some releases don't use _unitdir..
 mkdir -p %{buildroot}/usr/lib/systemd/system
