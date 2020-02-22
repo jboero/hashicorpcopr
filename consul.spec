@@ -1,4 +1,5 @@
 # https://fedoraproject.org/wiki/How_to_create_an_RPM_package
+# Built and maintained by John Boero - jboero@hashicorp.com
 
 Name:		consul
 Version:	1.7.1
