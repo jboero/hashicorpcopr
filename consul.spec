@@ -12,7 +12,7 @@ Source0:	https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_li
 Source1:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}-server.json.sample
 Source2:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.service
 Source3:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}-agent.json
-Source4:    https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_arm.zip
+Source4:    https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_arm64.zip
 Source5:    https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_386.zip
 BuildRequires:  systemd coreutils unzip
 Requires(pre):	shadow-utils
