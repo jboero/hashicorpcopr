@@ -1,14 +1,14 @@
 # https://fedoraproject.org/wiki/How_to_create_an_RPM_package
 # Built and maintained by John Boero - jboero@hashicorp.com
 
-%define hashiarch %(if [ "%{_target}" == 'x86_64' ]; then echo 'amd64'; elif [ "%{_target}" == 'aarch64' ]; then echo 'arm64'; elif [ "%_target" == 'i386' ]; then echo '386'; else echo "%{_target}"; fi)
+%define hashiarch %(if [ "%{_target_arch}" == 'x86_64' ]; then echo 'amd64'; elif [ "%{_target_arch}" == 'aarch64' ]; then echo 'arm64'; elif [ "%_target_arch" == 'i386' ]; then echo '386'; else echo "%{_target_arch}"; fi)
 
 Name:		consul
 Version:	1.7.1
 Release:	2%{?dist}
 Summary:	Consul is a tool for service discovery
 License:	MPL
-Source0:	https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_%{hashiarch}.zip
+Source0:	https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_%{_target}_%{hashiarch}.zip
 Source1:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}-server.json.sample
 Source2:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.service
 Source3:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}-agent.json
