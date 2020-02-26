@@ -30,6 +30,7 @@ generate AWS IAM/STS credentials, SQL/NoSQL databases, X.509 certificates, SSH
 credentials, and more.
 
 %prep
+echo hashiarch=%{hashiarch}
 %autosetup -c %{name}-%{version}
 
 %build
