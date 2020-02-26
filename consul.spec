@@ -8,7 +8,7 @@ Version:	1.7.1
 Release:	1%{?dist}
 Summary:	Consul is a tool for service discovery
 License:	MPL
-Source0:	https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_%{_target_os}_%{hashiarch}.zip
+Source0:	https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_%{hashiarch}.zip
 Source1:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}-server.json.sample
 Source2:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.service
 Source3:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}-agent.json
