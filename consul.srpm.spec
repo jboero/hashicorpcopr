@@ -10,7 +10,7 @@ License:	MPL
 Source0:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}-server.json.sample
 Source1:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.service
 Source2:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}-agent.json
-BuildRequires:  systemd coreutils git golang-bin
+BuildRequires:  systemd coreutils unzip golang-bin
 Requires(pre):	shadow-utils
 Requires(post):	systemd libcap
 Requires(preun):	systemd
@@ -32,14 +32,17 @@ echo hashiarch=%{hashiarch}
 %autosetup -c %{name}-%{version}
 
 %build
-git clone https://github.com/hashicorp/consul.git
-cd consul
+curl -o %{name}.zip https://github.com/hashicorp/%{name}/archive/v%{version}.zip
+unzip %{name}.zip
+cd %{name}-%{version}/
 make tools
 make dev
 
 %install
 
 mkdir -p %{buildroot}%{_bindir}/
+
+# TODO find path relative to build
 cp -p %{name} %{buildroot}%{_bindir}/
 
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}.d
