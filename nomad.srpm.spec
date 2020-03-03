@@ -1,27 +1,26 @@
 # https://fedoraproject.org/wiki/How_to_create_an_RPM_package
 # Built and maintained by John Boero - jboero@hashicorp.com
-# SRPM for general arch - Power9 testing.
 
-Name:		consul
-Version:	1.7.1
-Release:	3%{?dist}
-Summary:	Consul is a tool for service discovery
+Name:		nomad
+Version:	0.10.4
+Release:	1%{?dist}
+Summary:	Hashicorp Nomad job scheduler
 License:	MPL
-Source0:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}-server.json.sample
-Source1:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.service
-Source2:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}-agent.json
-BuildRequires:  systemd coreutils unzip golang-bin
+# Our engineering uses "amd64" instead of "x86_64" so ugly mapping...
+Source0:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.hcl
+Source1:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.agent.hcl
+Source2:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.service
+
+BuildRequires:  systemd coreutils git
 Requires(pre):	shadow-utils
 Requires(post):	systemd libcap
-Requires(preun):	systemd
-Requires(postun):	systemd
-URL:		https://www.consul.io/
+URL:		https://www.nomadproject.io/
 
 %define debug_package %{nil}
 
 %description
-Consul secures, stores, and tightly controls access to tokens, passwords,
-certificates, API keys, and other secrets in modern computing. Consul handles
+nomad secures, stores, and tightly controls access to tokens, passwords,
+certificates, API keys, and other secrets in modern computing. nomad handles
 leasing, key revocation, key rolling, and auditing. Through a unified API, users
 can access an encrypted Key/Value store and network encryption-as-a-service, or
 generate AWS IAM/STS credentials, SQL/NoSQL databases, X.509 certificates, SSH
@@ -35,25 +34,24 @@ if ! [ -f %{name}-%{version}.zip ]; then
 fi
 unzip -o %{name}-%{version}.zip
 cd %{name}-%{version}/
-make tools
+make bootstrap
 make dev
 
 %install
-cd %{name}-%{version}/
 
+cd %{name}-%{version}
 mkdir -p %{buildroot}%{_bindir}/
 cp -p bin/%{name} %{buildroot}%{_bindir}/
 
-mkdir -p %{buildroot}%{_sysconfdir}/%{name}.d
-cp -p %{SOURCE0} %{buildroot}%{_sysconfdir}/%{name}.d/
-cp -p %{SOURCE2} %{buildroot}%{_sysconfdir}/%{name}.d/
+mkdir -p %{buildroot}%{_sysconfdir}/%{name}
+cp -p %{SOURCE0} %{buildroot}%{_sysconfdir}/%{name}/
+cp -p %{SOURCE1} %{buildroot}%{_sysconfdir}/%{name}/
 
-mkdir -p %{buildroot}%{_sharedstatedir}/%{name}
-mkdir -p %{buildroot}/var/lib/consul
+mkdir -p %{buildroot}%{_sharedstatedir}/%{name}/plugins
 
-# Remember some releases don't use _unitdir..
+# Some platforms don't have unitdir... ugh
 mkdir -p %{buildroot}/usr/lib/systemd/system
-cp -p %{SOURCE1} %{buildroot}/usr/lib/systemd/system/
+cp -p %{SOURCE2} %{buildroot}/usr/lib/systemd/system/
 
 %clean
 rm -rf %{buildroot}
@@ -61,18 +59,17 @@ rm -rf %{_builddir}/*
 
 %files
 %{_bindir}/%{name}
-%dir %{_sysconfdir}/%{name}.d
-%config(noreplace) %{_sysconfdir}/%{name}.d/%{name}-server.json.sample
-%config(noreplace) %{_sysconfdir}/%{name}.d/%{name}-agent.json
+%dir %{_sysconfdir}/%{name}
+%config(noreplace) %{_sysconfdir}/%{name}/%{name}.hcl
+%config(noreplace) %{_sysconfdir}/%{name}/%{name}.agent.hcl
 %attr(0750,%{name},%{name}) %dir %{_sharedstatedir}/%{name}
 /usr/lib/systemd/system/%{name}.service
-%dir %attr(0750, consul, consul) /var/lib/consul
 
 %pre
 getent group %{name} > /dev/null || groupadd -r %{name}
 getent passwd %{name} > /dev/null || \
     useradd -r -d %{_sharedstatedir}/%{name} -g %{name} \
-    -s /sbin/nologin -c "Consul secret management tool" %{name}
+    -s /sbin/nologin -c "Hashicorp Nomad job scheduler" %{name}
 exit 0
 
 %post
@@ -91,7 +88,7 @@ if [ $1 -eq 0 ]; then
       /usr/bin/systemctl --no-reload disable %{name}.service
       /usr/bin/systemctl stop %{name}.service
     fi
-
+    
 %postun
 %systemd_postun_with_restart %{name}.service
 
