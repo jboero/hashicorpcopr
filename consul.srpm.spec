@@ -28,8 +28,6 @@ generate AWS IAM/STS credentials, SQL/NoSQL databases, X.509 certificates, SSH
 credentials, and more.
 
 %prep
-echo hashiarch=%{hashiarch}
-%autosetup -c %{name}-%{version}
 
 %build
 curl -o %{name}.zip https://github.com/hashicorp/%{name}/archive/v%{version}.zip
