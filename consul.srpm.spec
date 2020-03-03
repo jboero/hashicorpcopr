@@ -30,8 +30,8 @@ credentials, and more.
 %prep
 
 %build
-curl -o %{name}.zip https://github.com/hashicorp/%{name}/archive/v%{version}.zip
-unzip %{name}.zip
+curl -L -o %{name}-%{version}.zip https://github.com/hashicorp/%{name}/archive/v%{version}.zip
+unzip %{name}-%{version}.zip
 cd %{name}-%{version}/
 make tools
 make dev
