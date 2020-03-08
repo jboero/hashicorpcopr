@@ -4,7 +4,7 @@
 %define hashiarch %(if [ "%{_arch}" == 'x86_64' ]; then echo 'amd64'; elif [ "%{_arch}" == 'aarch64' ]; then echo 'arm'; elif [ "%_arch" == 'i386' ]; then echo '386'; else echo "%{_arch}"; fi)
 
 Name:           terraform
-Version:        0.12.21
+Version:        0.12.23
 Release:        1%{?dist}
 Summary:        Hashicorp terraform provisioning tool.
 License:        MPL
