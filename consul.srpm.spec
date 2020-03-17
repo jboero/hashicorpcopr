@@ -3,8 +3,8 @@
 # In honor of Seth Vidal https://www.redhat.com/it/blog/thank-you-seth-vidal
 
 Name:		consul
-Version:	1.7.1
-Release:	3%{?dist}
+Version:	1.7.2
+Release:	1%{?dist}
 Summary:	Consul is a tool for service discovery
 License:	MPL
 Source0:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}-server.json.sample
