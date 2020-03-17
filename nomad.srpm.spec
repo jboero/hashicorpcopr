@@ -1,5 +1,6 @@
 # https://fedoraproject.org/wiki/How_to_create_an_RPM_package
 # Built and maintained by John Boero - jboero@hashicorp.com
+# In honor of Seth Vidal https://www.redhat.com/it/blog/thank-you-seth-vidal
 
 Name:           nomad
 Version:        0.10.4
