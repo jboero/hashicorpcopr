@@ -1,20 +1,20 @@
 # https://fedoraproject.org/wiki/How_to_create_an_RPM_package
 # Built and maintained by John Boero - jboero@hashicorp.com
 
-Name:		nomad
-Version:	0.10.4
-Release:	1%{?dist}
-Summary:	Hashicorp Nomad job scheduler
-License:	MPL
+Name:           nomad
+Version:        0.10.4
+Release:        1%{?dist}
+Summary:        Hashicorp Nomad job scheduler
+License:        MPL
 # Our engineering uses "amd64" instead of "x86_64" so ugly mapping...
-Source0:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.hcl
-Source1:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.agent.hcl
-Source2:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.service
+Source0:        https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.hcl
+Source1:        https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.agent.hcl
+Source2:        https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.service
 
 BuildRequires:  systemd coreutils git
-Requires(pre):	shadow-utils
-Requires(post):	systemd libcap
-URL:		https://www.nomadproject.io/
+Requires(pre):  shadow-utils
+Requires(post): systemd libcap
+URL:            https://www.nomadproject.io/
 
 %define debug_package %{nil}
 
@@ -29,24 +29,23 @@ credentials, and more.
 %prep
 
 %build
-if ! [ -f %{name}-%{version}.zip ]; then
-	curl -L -o %{name}-%{version}.zip https://github.com/hashicorp/%{name}/archive/v%{version}.zip
-fi
-unzip -o %{name}-%{version}.zip
-cd %{name}-%{version}/
+export GOPATH=%{buildroot}
+export PATH=$GOPATH/bin:$PATH
+go get github.com/ugorji/go/codec golang.org/x/tools/go/packages github.com/golang/protobuf
+mkdir -p $GOPATH/src/github.com/hashicorp
+cd $GOPATH/src/github.com/hashicorp
+git clone -b v%{version} https://github.com/hashicorp/nomad.git || echo "Skipping clone"
+cd nomad
 make bootstrap
 make dev
+mv bin/%{name} %{buildroot}
 
 %install
-
-cd %{name}-%{version}
 mkdir -p %{buildroot}%{_bindir}/
-cp -p bin/%{name} %{buildroot}%{_bindir}/
-
+cp -p %{name} %{buildroot}%{_bindir}/
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}
 cp -p %{SOURCE0} %{buildroot}%{_sysconfdir}/%{name}/
 cp -p %{SOURCE1} %{buildroot}%{_sysconfdir}/%{name}/
-
 mkdir -p %{buildroot}%{_sharedstatedir}/%{name}/plugins
 
 # Some platforms don't have unitdir... ugh
