@@ -1,6 +1,6 @@
 # https://fedoraproject.org/wiki/How_to_create_an_RPM_package
 # Built and maintained by John Boero - jboero@hashicorp.com
-# SRPM for general arch - Power9 testing.
+# In honor of Seth Vidal https://www.redhat.com/it/blog/thank-you-seth-vidal
 
 Name:		consul
 Version:	1.7.1
