@@ -40,7 +40,7 @@ go get github.com/sean-/seed
 mkdir -p $GOPATH/src/github.com/hashicorp
 cd $GOPATH/src/github.com/hashicorp
 tar -xvzf %{SOURCE0}
-mv %{name}-%{version} nomad
+mv %{name}-%{version} %{name}
 
 %build
 export GOPATH=%{_builddir}
