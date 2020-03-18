@@ -8,9 +8,10 @@ Release:        1%{?dist}
 Summary:        Hashicorp Nomad job scheduler
 License:        MPL
 # Our engineering uses "amd64" instead of "x86_64" so ugly mapping...
-Source0:        https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.hcl
-Source1:        https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.agent.hcl
-Source2:        https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.service
+Source0:        https://github.com/hashicorp/%{name}/archive/v%{version}.tar.gz
+Source1:        https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.hcl
+Source2:        https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.agent.hcl
+Source3:        https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.service
 
 BuildRequires:  systemd coreutils git
 Requires(pre):  shadow-utils
@@ -28,30 +29,38 @@ generate AWS IAM/STS credentials, SQL/NoSQL databases, X.509 certificates, SSH
 credentials, and more.
 
 %prep
-
-%build
-export GOPATH=%{buildroot}
+export GOPATH=%{_builddir}
 export PATH=$GOPATH/bin:$PATH
-go get github.com/ugorji/go/codec golang.org/x/tools/go/packages github.com/golang/protobuf
+go get github.com/ugorji/go/codec
+go get golang.org/x/tools/go/packages
+go get github.com/hashicorp/nomad/client/logmon
+go get github.com/mattn/go-colorable
+go get github.com/mitchellh/cli
+go get github.com/sean-/seed
 mkdir -p $GOPATH/src/github.com/hashicorp
 cd $GOPATH/src/github.com/hashicorp
-git clone -b v%{version} https://github.com/hashicorp/nomad.git || echo "Skipping clone"
-cd nomad
+tar -xvzf %{SOURCE0}
+mv %{name}-%{version} nomad
+
+%build
+export GOPATH=%{_builddir}
+export PATH=$GOPATH/bin:$PATH
+cd $GOPATH/src/github.com/hashicorp/%{name}
 make bootstrap
 make dev
 mv bin/%{name} %{buildroot}
 
 %install
 mkdir -p %{buildroot}%{_bindir}/
-cp -p %{name} %{buildroot}%{_bindir}/
+cp -p $GOPATH/bin/%{name} %{buildroot}%{_bindir}/
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}
-cp -p %{SOURCE0} %{buildroot}%{_sysconfdir}/%{name}/
 cp -p %{SOURCE1} %{buildroot}%{_sysconfdir}/%{name}/
+cp -p %{SOURCE2} %{buildroot}%{_sysconfdir}/%{name}/
 mkdir -p %{buildroot}%{_sharedstatedir}/%{name}/plugins
 
 # Some platforms don't have unitdir... ugh
 mkdir -p %{buildroot}/usr/lib/systemd/system
-cp -p %{SOURCE2} %{buildroot}/usr/lib/systemd/system/
+cp -p %{SOURCE3} %{buildroot}/usr/lib/systemd/system/
 
 %clean
 rm -rf %{buildroot}
