@@ -1,5 +1,5 @@
 [Unit]
-Description=Nomad secret management tool
+Description=Hashicorp Nomad job scheduler
 After=syslog.target network.target local-fs.target remote-fs.target nss-lookup.target
 
 [Service]
