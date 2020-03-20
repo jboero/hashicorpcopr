@@ -12,10 +12,9 @@ License:	MPL
 # Our engineering uses "amd64" instead of "x86_64" so ugly mapping...
 Source0:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_%{hashiarch}.zip
 Source1:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.hcl
-Source2:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.agent.hcl
-Source3:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.service
-Source4:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_arm.zip
-Source5:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_386.zip
+Source2:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.service
+Source3:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_arm.zip
+Source4:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_386.zip
 
 BuildRequires:  systemd coreutils unzip
 Requires(pre):	shadow-utils
@@ -45,14 +44,13 @@ mkdir -p %{buildroot}%{_bindir}/
 cp -p %{name} %{buildroot}%{_bindir}/
 
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}
-cp -p %{SOURCE1} %{buildroot}%{_sysconfdir}/%{name}/%{name}.hcl
-cp -p %{SOURCE2} %{buildroot}%{_sysconfdir}/%{name}/%{name}.agent.hcl
+cp -p %{SOURCE1} %{buildroot}%{_sysconfdir}/%{name}/
 
 mkdir -p %{buildroot}%{_sharedstatedir}/%{name}/plugins
 
 # Some platforms don't have unitdir... ugh
 mkdir -p %{buildroot}/usr/lib/systemd/system
-cp -p %{SOURCE3} %{buildroot}/usr/lib/systemd/system/
+cp -p %{SOURCE2} %{buildroot}/usr/lib/systemd/system/
 
 %clean
 rm -rf %{buildroot}
