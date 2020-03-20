@@ -9,7 +9,7 @@ Summary:        Hashicorp Nomad job scheduler
 License:        MPL
 # Our engineering uses "amd64" instead of "x86_64" so ugly mapping...
 Source0:        https://github.com/hashicorp/%{name}/archive/v%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.agent.hcl
+Source1:        https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.hcl
 Source2:        https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.service
 
 BuildRequires:  systemd coreutils git
