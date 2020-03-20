@@ -8,6 +8,8 @@ User=nomad
 Group=nomad
 ExecStart=/usr/bin/nomad agent -config=/etc/nomad/
 ExecReload=/bin/kill -s HUP $MAINPID
+Restart=always
+RestartSec=5
 
 [Install]
 WantedBy=multi-user.target
