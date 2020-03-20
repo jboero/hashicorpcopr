@@ -5,20 +5,15 @@
 datacenter = "dc1"
 data_dir   = "/var/lib/nomad/"
 
-bind_addr  = "127.0.0.1"
-
-advertise {
-        http    = "127.0.0.1"
-        rpc     = "127.0.0.1"
-        serf    = "127.0.0.1"
-}
+bind_addr  = "0.0.0.0"
 
 server {
-        enabled = true
+        enabled = false
 }
 
 client {
         enabled = true
+        servers = [""]
 }
 
 consul {
