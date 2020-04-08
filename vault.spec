@@ -5,7 +5,7 @@
 %define hashiarch %(if [ "%{_arch}" == 'x86_64' ]; then echo 'amd64'; elif [ "%{_arch}" == 'aarch64' ]; then echo 'arm'; elif [ "%_arch" == 'i386' ]; then echo '386'; else echo "%{_arch}"; fi)
 
 Name:		vault
-Version:	1.3.2
+Version:	1.4.0
 Release:	1%{?dist}
 Summary:	Vault is a tool for securely accessing secrets
 License:	MPL
