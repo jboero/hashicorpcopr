@@ -60,7 +60,6 @@ rm -rf %{_builddir}/*
 %{_bindir}/%{name}
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}/%{name}.hcl
-%config(noreplace) %{_sysconfdir}/%{name}/%{name}.agent.hcl
 %attr(0750,%{name},%{name}) %dir %{_sharedstatedir}/%{name}
 /usr/lib/systemd/system/%{name}.service
 
