@@ -3,7 +3,7 @@
 # In honor of Seth Vidal https://www.redhat.com/it/blog/thank-you-seth-vidal
 
 Name:           nomad
-Version:        0.10.4
+Version:        0.11.0
 Release:        1%{?dist}
 Summary:        Hashicorp Nomad job scheduler
 License:        MPL
