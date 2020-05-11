@@ -10,6 +10,11 @@ backend "file" {
 #  path = "/var/lib/vault2/"
 }
 
+# https://www.vaultproject.io/docs/configuration/storage/raft
+#storage "raft" {
+#  path="/var/lib/vault"
+#}
+
 #storage "consul" {
 #  address = "127.0.0.1:8500"
 #  path    = "vault"
