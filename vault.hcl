@@ -5,7 +5,7 @@ ui = true
 #mlock = true
 #disable_mlock = true
 
-backend "file" {
+storage "file" {
   path = "/var/lib/vault/"
 #  path = "/var/lib/vault2/"
 }
