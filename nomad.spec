@@ -5,7 +5,7 @@
 %define hashiarch %(if [ "%{_arch}" == 'x86_64' ]; then echo 'amd64'; elif [ "%{_arch}" == 'aarch64' ]; then echo 'arm'; elif [ "%_arch" == 'i386' ]; then echo '386'; else echo "%{_arch}"; fi)
 
 Name:		nomad
-Version:	0.11.1
+Version:	0.11.2
 Release:	1%{?dist}
 Summary:	Hashicorp Nomad job scheduler
 License:	MPL
