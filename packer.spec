@@ -5,7 +5,7 @@
 %define hashiarch %(if [ "%{_arch}" == 'x86_64' ]; then echo 'amd64'; elif [ "%{_arch}" == 'aarch64' ]; then echo 'arm'; elif [ "%_arch" == 'i386' ]; then echo '386'; else echo "%{_arch}"; fi)
 
 Name:		packer
-Version:	1.6.0
+Version:	1.6.1
 Release:	1%{?dist}
 Summary:	Hashicorp packer build tool.
 License:	MPL
