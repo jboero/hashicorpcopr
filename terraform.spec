@@ -6,7 +6,7 @@
 
 Name:           terraform
 Version:        0.13.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Hashicorp terraform provisioning tool.
 License:        MPL
 # Our engineering uses "amd64" instead of "x86_64" so ugly mapping...
@@ -15,7 +15,7 @@ Source1:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{vers
 Source2:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_386.zip
 
 # Some builds fail on systemd, but hey, systemd right? 👍
-BuildRequires: systemd unzip
+BuildRequires: systemd unzip upx
 Requires(pre):	shadow-utils
 Requires(post):	systemd libcap
 URL:		https://www.%{name}.io/
@@ -29,6 +29,7 @@ Terraform provisions multicloud resources using a common language of HCL.
 %autosetup -c %{name}-%{version}
 
 %build
+upx %{name}
 
 %install
 
