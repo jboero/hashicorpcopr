@@ -6,14 +6,14 @@
 
 Name:		packer
 Version:	1.6.1
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Hashicorp packer build tool.
 License:	MPL
 # Our engineering uses "amd64" instead of "x86_64" so ugly mapping...
 Source0:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_%{hashiarch}.zip
 Source1:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_arm.zip
 Source2:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_386.zip
-BuildRequires:  systemd coreutils unzip
+BuildRequires:  systemd coreutils unzip upx
 Requires(pre):	shadow-utils
 Requires(post):	systemd libcap
 URL:		https://www.%{name}.io/
@@ -27,6 +27,7 @@ Packer builds images across multiple platforms.
 %autosetup -c %{name}-%{version}
 
 %build
+upx %{name}
 
 %install
 
