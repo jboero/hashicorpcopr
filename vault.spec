@@ -6,7 +6,7 @@
 
 Name:		vault
 Version:	1.5.0
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Vault is a tool for securely accessing secrets
 License:	MPL
 # Our engineering uses "amd64" instead of "x86_64" so ugly mapping...
@@ -18,7 +18,7 @@ Source4:    https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}
 Source5:    https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_386.zip
 Source6:    https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.agent.hcl
 
-BuildRequires:  systemd coreutils unzip
+BuildRequires:  systemd coreutils unzip upx
 Requires(pre):	shadow-utils
 Requires(post):	systemd
 Requires(preun):	systemd
@@ -39,6 +39,7 @@ credentials, and more.
 %autosetup -c %{name}-%{version}
 
 %build
+upx %{name}
 
 %install
 
