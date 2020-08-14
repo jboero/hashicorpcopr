@@ -6,7 +6,7 @@
 
 Name:		nomad
 Version:	0.12.1
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Hashicorp Nomad job scheduler
 License:	MPL
 # Our engineering uses "amd64" instead of "x86_64" so ugly mapping...
@@ -16,7 +16,7 @@ Source2:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.s
 Source3:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_arm.zip
 Source4:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_386.zip
 
-BuildRequires:  systemd coreutils unzip
+BuildRequires:  systemd coreutils unzip upx
 Requires(pre):	shadow-utils
 Requires(post):	systemd libcap
 #Requires(preun):	systemd
@@ -37,6 +37,7 @@ credentials, and more.
 %autosetup -c %{name}-%{version}
 
 %build
+upx %{name}
 
 %install
 
