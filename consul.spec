@@ -6,7 +6,7 @@
 
 Name:		consul
 Version:	1.8.3
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Consul is a tool for service discovery
 License:	MPL
 Source0:	https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_%{hashiarch}.zip
@@ -15,7 +15,7 @@ Source2:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.s
 Source3:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}-agent.json
 Source4:    https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_arm64.zip
 Source5:    https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_386.zip
-BuildRequires:  systemd coreutils unzip
+BuildRequires:  systemd coreutils unzip upx
 Requires(pre):	shadow-utils
 Requires(post):	systemd libcap
 Requires(preun):	systemd
@@ -37,6 +37,7 @@ echo hashiarch=%{hashiarch}
 %autosetup -c %{name}-%{version}
 
 %build
+upx %{name}
 
 %install
 
