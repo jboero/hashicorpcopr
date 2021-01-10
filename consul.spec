@@ -5,7 +5,7 @@
 %define hashiarch %(if [ "%{_arch}" == 'x86_64' ]; then echo 'amd64'; elif [ "%{_arch}" == 'aarch64' ]; then echo 'arm64'; elif [ "%_arch" == 'i386' ]; then echo '386'; else echo "%{_arch}"; fi)
 
 Name:		consul
-Version:	1.8.4
+Version:	1.9.1
 Release:	1%{?dist}
 Summary:	Consul is a tool for service discovery
 License:	MPL
