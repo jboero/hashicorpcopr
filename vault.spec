@@ -2,7 +2,7 @@
 # Built and maintained by John Boero - jboero@hashicorp.com
 # In honor of Seth Vidal https://www.redhat.com/it/blog/thank-you-seth-vidal
 
-%define hashiarch %(if [ "%{_arch}" == 'x86_64' ]; then echo 'amd64'; elif [ "%{_arch}" == 'aarch64' ]; then echo 'arm'; elif [ "%_arch" == 'i386' ]; then echo '386'; else echo "%{_arch}"; fi)
+%define hashiarch %(if [ "%{_arch}" == 'x86_64' ]; then echo 'amd64'; elif [ "%{_arch}" == 'aarch64' ]; then echo 'arm64'; elif [ "%_arch" == 'i386' ]; then echo '386'; else echo "%{_arch}"; fi)
 
 Name:		vault
 Version:	1.6.1
