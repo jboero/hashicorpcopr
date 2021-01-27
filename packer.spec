@@ -2,11 +2,11 @@
 # Built and maintained by John Boero - jboero@hashicorp.com
 # In honor of Seth Vidal https://www.redhat.com/en/blog/thank-you-seth-vidal
 
-%define hashiarch %(if [ "%{_arch}" == 'x86_64' ]; then echo 'amd64'; elif [ "%{_arch}" == 'aarch64' ]; then echo 'arm'; elif [ "%_arch" == 'i386' ]; then echo '386'; else echo "%{_arch}"; fi)
+%define hashiarch %(if [ "%{_arch}" == 'x86_64' ]; then echo 'amd64'; elif [ "%{_arch}" == 'aarch64' ]; then echo 'arm64'; elif [ "%_arch" == 'i386' ]; then echo '386'; else echo "%{_arch}"; fi)
 
 Name:		packer
 Version:	1.6.6
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Hashicorp packer build tool.
 License:	MPL
 # Our engineering uses "amd64" instead of "x86_64" so ugly mapping...
