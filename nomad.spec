@@ -13,7 +13,7 @@ License:	MPL
 Source0:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_%{hashiarch}.zip
 Source1:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.hcl
 Source2:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.service
-Source3:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_arm.zip
+Source3:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_arm64.zip
 Source4:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_386.zip
 
 BuildRequires:  systemd coreutils unzip upx
