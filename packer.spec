@@ -11,7 +11,7 @@ Summary:	Hashicorp packer build tool.
 License:	MPL
 # Our engineering uses "amd64" instead of "x86_64" so ugly mapping...
 Source0:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_%{hashiarch}.zip
-Source1:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_arm.zip
+Source1:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_arm64.zip
 Source2:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_386.zip
 BuildRequires:  systemd coreutils unzip upx
 Requires(pre):	shadow-utils
