@@ -14,7 +14,7 @@ Source0:    https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}
 Source1:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.hcl
 Source2:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.service
 Source3:    https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.conf
-Source4:    https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_arm.zip
+Source4:    https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_arm64.zip
 Source5:    https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_386.zip
 Source6:    https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.agent.hcl
 
