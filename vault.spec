@@ -6,7 +6,7 @@
 
 Name:		vault
 Version:	1.6.1
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Vault is a tool for securely accessing secrets
 License:	MPL
 # Our engineering uses "amd64" instead of "x86_64" so ugly mapping...
