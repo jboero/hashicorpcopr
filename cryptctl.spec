@@ -28,6 +28,7 @@ Summary:        A utility for setting up LUKS-based disk encryption from SUSE
 License:        GPL-3.0-only
 Group:          System/Management
 URL:            https://www.suse.com/products/sles-for-sap
+BuildRequires:  git
 BuildRequires:  go
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
@@ -84,20 +85,6 @@ install -D -m 0644 ospackage/udev/99-cryptctl-auto-unlock.rules %{buildroot}/%{_
 # Runtime and TLS certificate dir
 install -d -m 0700 %{buildroot}/%{_localstatedir}/lib/%{name}
 install -d -m 0700 %{buildroot}/%{_sysconfdir}/%{name}/servertls
-
-%pre
-%service_add_pre cryptctl-server.service cryptctl-client.service
-
-%post
-%service_add_post cryptctl-server.service cryptctl-client.service
-%fillup_only -n cryptctl-server
-%fillup_only -n cryptctl-client
-
-%preun
-%service_del_preun cryptctl-server.service cryptctl-client.service
-
-%postun
-%service_del_postun cryptctl-server.service cryptctl-client.service
 
 %files
 %defattr(-,root,root)
