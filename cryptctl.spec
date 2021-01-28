@@ -49,12 +49,16 @@ A disk encryption utility that helps setting up LUKS-based disk encryption using
 randomly generated keys, and keep all keys on a dedicated key server.
 
 %prep
+export GOPATH=$(pwd)
 mkdir -p %{SRCDIR}
 cd %{SRCDIR}
-export GOPATH=$(pwd)
 go get github.com/SUSE/cryptctl
 
 %build
+export GOPATH=$(pwd)
+cd %{SRCDIR}/src/github.com/SUSE/cryptctl
+tree
+go build
 
 %install
 cd %{SRCDIR}
