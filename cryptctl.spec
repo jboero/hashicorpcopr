@@ -28,8 +28,6 @@ Summary:        A utility for setting up LUKS-based disk encryption
 License:        GPL-3.0-only
 Group:          System/Management
 URL:            https://www.suse.com/products/sles-for-sap
-Source0:        https://github.com/SUSE/%{name}/archive/%{version}.tar.gz
-#Source1:        %{name}-rpmlintrc
 BuildRequires:  go
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
@@ -52,19 +50,17 @@ randomly generated keys, and keep all keys on a dedicated key server.
 %prep
 mkdir -p %{SRCDIR}
 cd %{SRCDIR}
-tar xf %{S:0}
+export GOPATH=$(pwd)
+go get github.com/SUSE/cryptctl
 
 %build
-export GOPATH=$(pwd)
-cd %{SRCDIR}
-gzip ospackage/man/cryptctl.8
-go build
 
 %install
 cd %{SRCDIR}
 mkdir -p %{buildroot}/%{_sbindir}
-install -m 0755 %{name} %{buildroot}/%{_sbindir}/
+install -m 0755 bin/%{name} %{buildroot}/%{_sbindir}/
 
+cd src/github.com/SUSE/cryptctl
 # Sysconfig files
 mkdir -p %{buildroot}/%{_fillupdir}/
 pushd ospackage/etc/sysconfig
@@ -74,7 +70,7 @@ done
 popd
 
 # One manual page
-install -D -m 0644 ospackage/man/cryptctl.8.gz %{buildroot}/%{_mandir}/man8/cryptctl.8.gz
+#install -D -m 0644 ospackage/man/cryptctl.8.gz %{buildroot}/%{_mandir}/man8/cryptctl.8.gz
 
 # Three systemd services
 install -D -m 0644 ospackage/svc/cryptctl-auto-unlock@.service %{buildroot}/%{_unitdir}/cryptctl-auto-unlock@.service
@@ -111,11 +107,11 @@ install -d -m 0700 %{buildroot}/%{_sysconfdir}/%{name}/servertls
 %dir %{_sysconfdir}/%{name}/servertls
 %{_sbindir}/%{name}
 %{_sbindir}/rccryptctl-server
-%{_mandir}/man8/*
+#%{_mandir}/man8/*
 %{_unitdir}/cryptctl-server.service
 %{_unitdir}/cryptctl-client.service
 %{_unitdir}/cryptctl-auto-unlock@.service
 %{_udevrulesdir}/99-cryptctl-auto-unlock.rules
-%doc %{SRCDIR}/LICENSE
+%doc %{SRCDIR}/src/github.com/SUSE/cryptctl/LICENSE
 
 %changelog
