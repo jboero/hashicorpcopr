@@ -24,7 +24,7 @@
 Name:           cryptctl
 Version:        2.3
 Release:        0
-Summary:        A utility for setting up LUKS-based disk encryption
+Summary:        A utility for setting up LUKS-based disk encryption from SUSE
 License:        GPL-3.0-only
 Group:          System/Management
 URL:            https://www.suse.com/products/sles-for-sap
