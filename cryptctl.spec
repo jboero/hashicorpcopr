@@ -31,7 +31,7 @@ URL:            https://www.suse.com/products/sles-for-sap
 BuildRequires:  go
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
-Requires:       btrfsprogs
+Requires:       btrfs-progs
 Requires:       cryptsetup
 Requires:       e2fsprogs
 Requires:       rsync
