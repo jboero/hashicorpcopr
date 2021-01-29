@@ -57,9 +57,7 @@ go get github.com/SUSE/cryptctl
 %build
 export GOPATH=$(pwd)
 cd %{SRCDIR}
-tree
 cd src/github.com/SUSE/cryptctl
-tree
 go build
 
 %install
