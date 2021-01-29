@@ -51,9 +51,7 @@ randomly generated keys, and keep all keys on a dedicated key server.
 
 %prep
 export GOPATH=$(pwd)
-mkdir -p %{SRCDIR}
-cd %{SRCDIR}
-go get github.com/SUSE/cryptctl
+go get ${SRCDIR}
 
 %build
 export GOPATH=$(pwd)
