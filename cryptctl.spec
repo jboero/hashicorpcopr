@@ -42,7 +42,7 @@ Requires:       xfsprogs
 ExclusiveArch:  x86_64 ppc64le
 %{?systemd_requires}
 
-%define GONS github.com/HouzuoGuo
+%define GONS github.com/SUSE
 %define SRCDIR  src/%{GONS}/%{name}
 
 %description
