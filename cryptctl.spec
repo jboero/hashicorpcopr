@@ -51,7 +51,7 @@ randomly generated keys, and keep all keys on a dedicated key server.
 
 %prep
 export GOPATH=$(pwd)
-go get ${SRCDIR}
+go get github.com/SUSE/%{name}
 
 %build
 export GOPATH=$(pwd)
