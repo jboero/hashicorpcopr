@@ -55,12 +55,10 @@ go get github.com/SUSE/%{name}
 
 %build
 export GOPATH=$(pwd)
-tree
 cd %{SRCDIR}
 go build
 
 %install
-cd %{SRCDIR}
 mkdir -p %{buildroot}/%{_sbindir}
 install -m 0755 bin/%{name} %{buildroot}/%{_sbindir}/
 
@@ -102,6 +100,6 @@ install -d -m 0700 %{buildroot}/%{_sysconfdir}/%{name}/servertls
 %{_unitdir}/cryptctl-client.service
 %{_unitdir}/cryptctl-auto-unlock@.service
 %{_udevrulesdir}/99-cryptctl-auto-unlock.rules
-%doc %{SRCDIR}/src/github.com/SUSE/cryptctl/LICENSE
+%doc %{SRCDIR}/LICENSE
 
 %changelog
