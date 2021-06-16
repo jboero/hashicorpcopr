@@ -14,7 +14,7 @@ Source0:    https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}
 Source1:	  https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.service
 Source2:    https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.conf
 
-BuildRequires:  systemd coreutils unzip upx
+BuildRequires:  systemd coreutils unzip
 Requires(pre):	shadow-utils
 Requires(post):	systemd
 Requires(preun):	systemd
