@@ -32,8 +32,6 @@ URL:		https://www.terraform.io/
 
 %install
 mkdir -p %{buildroot}%{_bindir}/
-pwd
-tree
 cp -p %{name}* %{buildroot}%{_bindir}/
 
 # Note _unitdir isn't present on all environments.
