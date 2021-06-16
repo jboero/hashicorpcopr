@@ -32,7 +32,9 @@ URL:		https://www.terraform.io/
 
 %install
 mkdir -p %{buildroot}%{_bindir}/
-cp -p %{SOURCE0} %{buildroot}%{_bindir}/
+pwd
+tree
+cp -p %{name}* %{buildroot}%{_bindir}/
 
 # Note _unitdir isn't present on all environments.
 mkdir -p %{buildroot}/usr/lib/systemd/system/
@@ -48,8 +50,8 @@ rm -rf %{_builddir}/*
 
 %files
 %{_bindir}/%{name}
+%{_bindir}/%{name}-core
 %config(noreplace) %{_sysconfdir}/sysconfig/%{name}.conf
-%attr(0750,%{name},%{name}) %dir %{_sharedstatedir}/%{name}
 /usr/lib/systemd/system/%{name}.service
 
 %pre
@@ -75,7 +77,7 @@ if [ $1 -eq 0 ]; then
       /usr/bin/systemctl --no-reload disable %{name}.service
       /usr/bin/systemctl stop %{name}.service
     fi
-    
+
 %postun
 %systemd_postun_with_restart %{name}.service
 
