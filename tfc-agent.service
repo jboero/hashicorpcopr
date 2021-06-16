@@ -1,0 +1,17 @@
+[Unit]
+Description=TFC Agent
+After=syslog.target network.target local-fs.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/sysconfig/tfe-agent.conf
+User=tfc
+Group=tfc
+ExecStart=/usr/bin/tfc-agent
+ExecReload=/bin/kill -s HUP $MAINPID
+LimitMEMLOCK=infinity
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
