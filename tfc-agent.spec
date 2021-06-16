@@ -32,7 +32,7 @@ URL:		https://www.terraform.io/
 
 %install
 mkdir -p %{buildroot}%{_bindir}/
-cp -p %{name} %{buildroot}%{_bindir}/
+cp -p %{SOURCE0} %{buildroot}%{_bindir}/
 
 # Note _unitdir isn't present on all environments.
 mkdir -p %{buildroot}/usr/lib/systemd/system/
