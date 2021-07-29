@@ -29,7 +29,7 @@ export PATH="$PATH:$HOME/node_modules/ember-cli/bin"
 echo $PATH
 yarn install
 yarn build:ui:desktop:app
-upx ui/desktop/electron-app/out/Boundary-linux-*/Boundary
+#upx ui/desktop/electron-app/out/Boundary-linux-*/Boundary
 
 %install
 mkdir -p %{buildroot}%{_bindir}/
