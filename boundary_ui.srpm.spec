@@ -25,8 +25,8 @@ tar -xvzf %{SOURCE0}
 %build
 #tree
 cd %{name}-%{version}
-export PATH="$PATH:$HOME/node_modules/ember-cli/bin"
-echo $PATH
+#export PATH="$PATH:$HOME/node_modules/ember-cli/bin"
+#echo $PATH
 yarn install
 yarn build:ui:desktop:app
 #upx ui/desktop/electron-app/out/Boundary-linux-*/Boundary
