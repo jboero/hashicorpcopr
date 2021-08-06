@@ -10,8 +10,7 @@ License:        MPL
 # Our engineering uses "amd64" instead of "x86_64" so ugly mapping...
 Source0:        https://github.com/hashicorp/%{name}/archive/v%{version}.tar.gz
 
-BuildRequires:  coreutils git yarnpkg npm upx xz-lzma-compat
-BuildRequires:  nodejs <= 15
+BuildRequires:  coreutils git yarnpkg npm upx xz-lzma-compat nodejs <= 1:15
 Requires(post): coreutils ffmpeg-libs vulkan-loader libglvnd-egl nodejs <= 1:15.0
 URL:            https://www.boundaryproject.io/
 
