@@ -11,7 +11,8 @@ License:        MPL
 Source0:        https://github.com/hashicorp/%{name}/archive/v%{version}.tar.gz
 
 BuildRequires:  coreutils git yarnpkg npm upx xz-lzma-compat
-Requires(post): coreutils ffmpeg-libs vulkan-loader libglvnd-egl 
+BuildRequires:  nodejs <= 15
+Requires(post): coreutils ffmpeg-libs vulkan-loader libglvnd-egl nodejs <= 1:15.0
 URL:            https://www.boundaryproject.io/
 
 %define debug_package %{nil}
