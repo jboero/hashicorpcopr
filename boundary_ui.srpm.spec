@@ -3,7 +3,7 @@
 # In honor of Seth Vidal https://www.redhat.com/it/blog/thank-you-seth-vidal
 
 Name:           boundary-ui
-Version:        1.2.0
+Version:        1.2.1
 Release:        1%{?dist}
 Summary:        HashiCorp Boundary UI for Linux
 License:        MPL
