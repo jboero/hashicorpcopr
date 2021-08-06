@@ -29,12 +29,12 @@ cd %{name}-%{version}
 #echo $PATH
 yarn install
 yarn build:ui:desktop:app
-#upx ui/desktop/electron-app/out/Boundary-linux-*/Boundary
+upx ui/desktop/electron-app/out/Boundary-linux-*/Boundary
 
 %install
 mkdir -p %{buildroot}%{_bindir}/
 cd %{name}-%{version}
-cp ui/desktop/electron-app/out/Boundary-linux-*/Boundary %{buildroot}%{_bindir}/
+cp ui/desktop/electron-app/out/Boundary-linux-*/Boundary %{buildroot}%{_bindir}/boundary-ui
 
 %clean
 rm -rf %{buildroot}
