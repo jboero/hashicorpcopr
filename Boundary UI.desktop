@@ -1,0 +1,19 @@
+[Desktop Entry]
+Comment[en_US]=
+Comment=
+Exec=/usr/share/boundary-ui/Boundary
+GenericName[en_US]=HashiCorp Boundary UI Client
+GenericName=HashiCorp Boundary UI Client
+Icon=/home/jboero/Desktop/boundary_icon.svg
+MimeType=
+Name[en_US]=Boundary UI
+Name=Boundary UI
+Path=/usr/share/boundary-ui
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
