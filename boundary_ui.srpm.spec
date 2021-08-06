@@ -41,7 +41,7 @@ rm -rf %{buildroot}
 rm -rf %{_builddir}/*
 
 %files
-%{_bindir}/Boundary
+%{_bindir}/boundary-ui
 
 %pre
 
