@@ -9,6 +9,7 @@ Summary:        HashiCorp Boundary UI for Linux
 License:        MPL
 # Our engineering uses "amd64" instead of "x86_64" so ugly mapping...
 Source0:        https://github.com/hashicorp/%{name}/archive/v%{version}.tar.gz
+Source1:        https://github.com/jboero/hashicorpcopr/raw/master/boundary_icon.svg
 
 BuildRequires:  coreutils git yarnpkg npm upx xz-lzma-compat nodejs <= 1:15
 Requires(post): coreutils ffmpeg-libs vulkan-loader libglvnd-egl nodejs <= 1:15.0
@@ -20,28 +21,62 @@ URL:            https://www.boundaryproject.io/
 Desktop client for Boundary UI simplifies operations of HashiCorp Boundary.
 
 %prep
-tar -xvzf %{SOURCE0}
+#tar -xvzf %{SOURCE0}
 
 %build
-#tree
 cd %{name}-%{version}
-#export PATH="$PATH:$HOME/node_modules/ember-cli/bin"
-#echo $PATH
 yarn install
 yarn build:ui:desktop:app
 upx ui/desktop/electron-app/out/Boundary-linux-*/Boundary
 
 %install
-mkdir -p %{buildroot}%{_bindir}/
+mkdir -p %{buildroot}%{_bindir} %{buildroot}%{_datadir}
 cd %{name}-%{version}
-cp ui/desktop/electron-app/out/Boundary-linux-*/Boundary %{buildroot}%{_bindir}/boundary-ui
+mv ui/desktop/electron-app/out/Boundary-linux-* %{buildroot}%{_datadir}/%{name}
+
+# If anybody finds out how to write heredocs in rpm spec, let me know....
+%{__cat} <<EOF  > %{buildroot}%{_bindir}/%{name}
+#!/bin/bash
+cd %{_datadir}/%{name}
+%{_datadir}/%{name}/Boundary
+EOF
+chmod +x %{buildroot}%{_bindir}/%{name}
+
+mkdir -p %{buildroot}%{_datadir}/icons/hicolor/scalable/apps
+cp %{SOURCE1} %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
+
+mkdir -p %{buildroot}%{_datadir}/applications
+%{__cat} <<EOF  > %{buildroot}%{_datadir}/applications/%{name}.desktop
+[Desktop Entry]
+Comment[en_US]=
+Comment=
+Exec=/usr/share/boundary-ui/Boundary
+GenericName[en_US]=HashiCorp Boundary UI Client
+GenericName=HashiCorp Boundary UI Client
+Icon=%{_datadir}/icons/hicolor/scalable/apps/boundary_icon.svg
+MimeType=
+Name[en_US]=Boundary UI
+Name=Boundary UI
+Path=/usr/share/boundary-ui
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
+EOF
 
 %clean
 rm -rf %{buildroot}
-rm -rf %{_builddir}/*
+#rm -rf %{_builddir}/*
 
 %files
-%{_bindir}/Boundary
+%{_bindir}/%{name}
+%{_datadir}/%{name}
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/icons/hicolor/scalable/apps/boundary_icon.svg
 
 %pre
 
