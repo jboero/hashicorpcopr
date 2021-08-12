@@ -12,7 +12,7 @@ Source0:        https://github.com/hashicorp/%{name}/archive/v%{version}.tar.gz
 Source1:        https://github.com/jboero/hashicorpcopr/raw/master/boundary_icon.svg
 
 BuildRequires:  coreutils git yarnpkg npm upx xz-lzma-compat nodejs <= 1:15
-Requires(post): coreutils ffmpeg-libs vulkan-loader libglvnd-egl nodejs <= 1:15.0
+Requires(post): coreutils boundary nodejs <= 1:15.0
 URL:            https://www.boundaryproject.io/
 
 %define debug_package %{nil}
@@ -33,6 +33,9 @@ upx ui/desktop/electron-app/out/Boundary-linux-*/Boundary
 mkdir -p %{buildroot}%{_bindir} %{buildroot}%{_datadir}
 cd %{name}-%{version}
 mv ui/desktop/electron-app/out/Boundary-linux-* %{buildroot}%{_datadir}/%{name}
+
+# Symlink to system boundary depedency instead of duplicating it.
+ln -sf /usr/bin/boundary %{buildroot}%{_datadir}/%{name}/resources/app/cli/boundary
 
 # If anybody finds out how to write heredocs in rpm spec, let me know....
 %{__cat} <<EOF  > %{buildroot}%{_bindir}/%{name}
