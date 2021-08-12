@@ -1,3 +1,4 @@
+# Boundary sample worker config. https://www.boundaryproject.io/docs/configuration/worker
 listener "tcp" {
     purpose = "proxy"
     #tls_disable = true
