@@ -1,15 +1,13 @@
 [Unit]
-Description=Hashicorp Boundary service
-After=syslog.target network.target local-fs.target remote-fs.target nss-lookup.target
+Description=Boundary @worker or @controller or just @boundary service.
 
 [Service]
-Type=simple
-User=nomad
-Group=nomad
-ExecStart=/usr/bin/boundary server -config=/etc/boundary/boundary.hcl
-ExecReload=/bin/kill -s HUP $MAINPID
-Restart=always
-RestartSec=5
+ExecStart=/usr/bin/boundary server -config /etc/boundary.d/%i.hcl
+User=boundary
+Group=boundary
+LimitMEMLOCK=infinity
+Capabilities=CAP_IPC_LOCK+ep
+CapabilityBoundingSet=CAP_SYSLOG CAP_IPC_LOCK
 
 [Install]
 WantedBy=multi-user.target
