@@ -4,7 +4,7 @@
 
 Name:           boundary-ui
 Version:        1.2.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        HashiCorp Boundary UI for Linux
 License:        MPL
 # Our engineering uses "amd64" instead of "x86_64" so ugly mapping...
