@@ -11,10 +11,11 @@ Summary:	Hashicorp Boundary job scheduler
 License:	MPL
 # Our engineering uses "amd64" instead of "x86_64" so ugly mapping...
 Source0:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_%{hashiarch}.zip
-Source1:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.hcl
+Source1:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/controller.hcl
 Source2:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/%{name}.service
 Source3:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_arm64.zip
 Source4:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_386.zip
+Source5:	https://raw.githubusercontent.com/jboero/hashicorpcopr/master/worker.hcl
 
 BuildRequires:  systemd coreutils unzip upx
 Requires(pre):	shadow-utils
@@ -41,6 +42,7 @@ cp -p %{name} %{buildroot}%{_bindir}/
 
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}
 cp -p %{SOURCE1} %{buildroot}%{_sysconfdir}/%{name}/
+cp -p %{SOURCE5} %{buildroot}%{_sysconfdir}/%{name}/
 
 mkdir -p %{buildroot}%{_sharedstatedir}/%{name}/plugins
 
@@ -55,7 +57,8 @@ rm -rf %{_builddir}/*
 %files
 %{_bindir}/%{name}
 %dir %{_sysconfdir}/%{name}
-%config(noreplace) %{_sysconfdir}/%{name}/%{name}.hcl
+%config(noreplace) %{_sysconfdir}/%{name}/worker.hcl
+%config(noreplace) %{_sysconfdir}/%{name}/controller.hcl
 %attr(0750,%{name},%{name}) %dir %{_sharedstatedir}/%{name}
 /usr/lib/systemd/system/%{name}.service
 
