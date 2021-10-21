@@ -10,7 +10,7 @@ Release:	1%{?dist}
 Summary:	Consul-K8s is a tool for service discovery and Kubernetes
 License:	MPL
 Source0:	https://github.com/hashicorp/%{name}/archive/refs/tags/v%{version}.tar.gz
-BuildRequires:  systemd coreutils unzip upx golang-bin
+BuildRequires:  systemd coreutils unzip upx golang-bin git
 Requires(pre):	shadow-utils
 Requires(post):	systemd libcap
 URL:		https://www.consul.io/
