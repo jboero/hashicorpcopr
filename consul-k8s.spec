@@ -13,8 +13,6 @@ Source0:	https://github.com/hashicorp/%{name}/archive/refs/tags/v%{version}.tar.
 BuildRequires:  systemd coreutils unzip upx golang-bin
 Requires(pre):	shadow-utils
 Requires(post):	systemd libcap
-Requires(preun):	
-Requires(postun):	
 URL:		https://www.consul.io/
 
 %define debug_package %{nil}
@@ -27,13 +25,15 @@ Consul service discovery with Kubernetes.
 
 %build
 pwd
-ls
-cd %{_builddir}/cli/
+cd %{name}-%{version}/cli
+go build .
 
 %install
-
+pwd
 mkdir -p %{buildroot}%{_bindir}/
-cp -p %{name} %{buildroot}%{_bindir}/
+cd %{name}-%{version}/cli
+tree
+cp -p cli %{buildroot}%{_bindir}/consul-k8s
 
 %clean
 rm -rf %{buildroot}
