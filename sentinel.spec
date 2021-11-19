@@ -4,7 +4,7 @@
 
 %define hashiarch %(if [ "%{_arch}" == 'x86_64' ]; then echo 'amd64'; elif [ "%{_arch}" == 'aarch64' ]; then echo 'arm64'; elif [ "%_arch" == 'i386' ]; then echo '386'; else echo "%{_arch}"; fi)
 
-Name:		hashicorp-sentinel
+Name:		sentinel
 Version:	0.18.4
 Release:	1%{?dist}
 Summary:	Hashicorp Sentinel CLI tool.
