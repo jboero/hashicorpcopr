@@ -11,7 +11,7 @@ License:        MPL
 Source0:        https://github.com/hashicorp/%{name}/archive/v%{version}.tar.gz
 Source1:        https://github.com/jboero/hashicorpcopr/raw/master/boundary_icon.svg
 
-BuildRequires:  coreutils git yarnpkg npm upx xz-lzma-compat nodejs <= 1:15
+BuildRequires:  coreutils git yarnpkg npm xz-lzma-compat nodejs <= 1:15
 Requires(post): coreutils boundary nodejs <= 1:15.0
 URL:            https://www.boundaryproject.io/
 
@@ -27,7 +27,7 @@ Desktop client for Boundary UI simplifies operations of HashiCorp Boundary.
 cd %{name}-%{version}
 yarn install
 yarn build:ui:desktop:app
-upx ui/desktop/electron-app/out/Boundary-linux-*/Boundary
+#upx ui/desktop/electron-app/out/Boundary-linux-*/Boundary
 
 %install
 mkdir -p %{buildroot}%{_bindir} %{buildroot}%{_datadir}
