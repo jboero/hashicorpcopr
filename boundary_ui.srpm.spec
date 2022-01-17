@@ -26,6 +26,7 @@ Desktop client for Boundary UI simplifies operations of HashiCorp Boundary.
 %build
 cd %{name}-%{version}
 yarn install
+yarn build ui:desktop
 yarn build:ui:desktop:app
 #upx ui/desktop/electron-app/out/Boundary-linux-*/Boundary
 
