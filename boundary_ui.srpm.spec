@@ -11,8 +11,8 @@ License:        MPL
 Source0:        https://github.com/hashicorp/%{name}/archive/v%{version}.tar.gz
 Source1:        https://github.com/jboero/hashicorpcopr/raw/master/boundary_icon.svg
 
-BuildRequires:  coreutils git yarnpkg npm xz-lzma-compat nodejs <= 1:15
-Requires(post): coreutils boundary nodejs <= 1:15.0
+BuildRequires:  coreutils git yarnpkg npm xz-lzma-compat nodejs
+Requires(post): coreutils boundary nodejs
 URL:            https://www.boundaryproject.io/
 
 %define debug_package %{nil}
