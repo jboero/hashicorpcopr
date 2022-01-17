@@ -21,11 +21,11 @@ URL:            https://www.boundaryproject.io/
 Desktop client for Boundary UI simplifies operations of HashiCorp Boundary.
 
 %prep
-#tar -xvzf %{SOURCE0}
+tar -xvzf %{SOURCE0}
 
 %build
 ls
-cd %{name}-*
+cd %{name}-%{version}
 yarn install
 yarn build ui:desktop
 yarn build:ui:desktop:app
