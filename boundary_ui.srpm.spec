@@ -21,7 +21,7 @@ URL:            https://www.boundaryproject.io/
 Desktop client for Boundary UI simplifies operations of HashiCorp Boundary.
 
 %prep
-tar -xvzf %{SOURCE0}
+tar -xzf %{SOURCE0}
 
 %build
 ls
