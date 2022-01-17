@@ -43,7 +43,7 @@ ln -sf /usr/bin/boundary %{buildroot}%{_datadir}/%{name}/resources/app/cli/bound
 %{__cat} <<EOF  > %{buildroot}%{_bindir}/%{name}
 #!/bin/bash
 cd %{_datadir}/%{name}
-%{_datadir}/%{name}/Boundary
+%{_datadir}/%{name}/boundary-desktop --no-sandbox
 EOF
 chmod +x %{buildroot}%{_bindir}/%{name}
 
