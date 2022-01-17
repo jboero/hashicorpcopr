@@ -24,7 +24,8 @@ Desktop client for Boundary UI simplifies operations of HashiCorp Boundary.
 #tar -xvzf %{SOURCE0}
 
 %build
-cd %{name}-%{version}
+ls
+cd %{name}-*
 yarn install
 yarn build ui:desktop
 yarn build:ui:desktop:app
