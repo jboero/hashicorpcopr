@@ -55,7 +55,7 @@ mkdir -p %{buildroot}%{_datadir}/applications
 [Desktop Entry]
 Comment[en_US]=
 Comment=
-Exec=/usr/share/boundary-ui/Boundary
+Exec=/usr/share/boundary-ui/bounary-desktop --no-sandbox
 GenericName[en_US]=HashiCorp Boundary UI Client
 GenericName=HashiCorp Boundary UI Client
 Icon=%{_datadir}/icons/hicolor/scalable/apps/boundary_icon.svg
