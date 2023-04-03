@@ -11,7 +11,7 @@ License:        MPL
 Source0:        https://github.com/hashicorp/%{name}/archive/v%{version}.tar.gz
 Source1:        https://github.com/jboero/hashicorpcopr/raw/master/boundary_icon.svg
 
-BuildRequires:  coreutils git yarnpkg npm xz-lzma-compat nodejs dpkg fakeroot
+BuildRequires:  coreutils git yarnpkg npm < 17 xz-lzma-compat nodejs dpkg fakeroot
 Requires(post): coreutils boundary nodejs
 URL:            https://www.boundaryproject.io/
 
