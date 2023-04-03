@@ -11,7 +11,7 @@ License:        MPL
 Source0:        https://github.com/hashicorp/%{name}/archive/v%{version}.tar.gz
 Source1:        https://github.com/jboero/hashicorpcopr/raw/master/boundary_icon.svg
 
-BuildRequires:  coreutils git npm < 17 xz-lzma-compat nodejs dpkg fakeroot
+BuildRequires:  coreutils git yarn npm < 17 xz-lzma-compat nodejs dpkg fakeroot
 Requires(post): coreutils boundary nodejs
 URL:            https://www.boundaryproject.io/
 
@@ -22,7 +22,6 @@ Desktop client for Boundary UI simplifies operations of HashiCorp Boundary.
 
 %prep
 tar -xzf %{SOURCE0}
-npm install yarn
 
 %build
 ls
