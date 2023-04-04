@@ -79,7 +79,7 @@ rm -rf %{buildroot}
 
 %files
 %{_bindir}/%{name}
-%dir %attr(0555, root, root) %{_datadir}/%{name}
+%attr(0555, root, root) %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/scalable/apps/boundary_icon.svg
 
