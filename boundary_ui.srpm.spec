@@ -49,7 +49,7 @@ EOF
 chmod +x %{buildroot}%{_bindir}/%{name}
 
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/scalable/apps
-cp %{SOURCE1} %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
+echo cp %{SOURCE1} %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
 
 mkdir -p %{buildroot}%{_datadir}/applications
 %{__cat} <<EOF  > %{buildroot}%{_datadir}/applications/%{name}.desktop
