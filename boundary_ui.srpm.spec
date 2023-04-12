@@ -24,7 +24,7 @@ Desktop client for Boundary UI simplifies operations of HashiCorp Boundary.
 tar -xzf %{SOURCE0}
 
 %build
-mkdir -p %{buildroot}/var/log
+mkdir -p %{buildroot}/var/log %{buildroot}/var/lib/mock/make-srpm-method/root/var/log
 ls
 cd %{name}-%{version}
 yarn install
